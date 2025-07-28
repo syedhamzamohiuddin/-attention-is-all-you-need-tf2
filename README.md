@@ -1,89 +1,103 @@
-# Transformer From Scratch — Attention Is All You Need (TensorFlow 2)
+# 🧠 Transformer: Attention Is All You Need — A Faithful TensorFlow Implementation
 
-> 📓 **Full implementation notebook is available on Kaggle:**  
-> 👉 [Transformer — Attention Is All You Need (Detailed TF2 Implementation)](https://www.kaggle.com/code/hamzamohiuddin/transformer-attention-is-all-you-need-detailed)
-
-This project is a faithful, from-scratch TensorFlow 2.x implementation of the landmark paper:  
-**[Attention Is All You Need (Vaswani et al., 2017)](https://arxiv.org/abs/1706.03762)**
-
-Unlike many simplified tutorials, this project strictly follows the original architecture, training regime, and data preparation — with **no shortcuts**. The entire network is built from scratch, including attention mechanisms, positional encoding, masking logic, and custom training loops.
+This repository contains a **from-scratch, TensorFlow 2 implementation** of the Transformer architecture described in the paper [*Attention Is All You Need* (Vaswani et al., 2017)](https://arxiv.org/abs/1706.03762).  
+  
+It replicates the architecture and training pipeline in detail — including **three-way weight tying**, **causal masking**, and **original Moses tokenization** — and is trained on the **WMT14 English–German** machine translation task.
 
 ---
 
-## 🔍 Why This Implementation Stands Out
+## 📌 Links
 
-- ✅ **Paper-Faithful Design**  
-  Directly follows the structure and hyperparameters described in the paper — you're encouraged to keep the paper open while exploring the notebook.
+- 📘 **Kaggle Notebook**:  
+  [Transformer — Attention Is All You Need (Detailed)](https://www.kaggle.com/code/hamzamohiuddin/transformer-attention-is-all-you-need-detailed)  
+  > 📌 Written as a tutorial for those implementing the paper — includes detailed commentary, diagrams, and code explanations with references to paper sections.
 
-- ✅ **Built From Scratch in TensorFlow 2**  
-  No high-level Keras abstractions or external libraries (like HuggingFace) are used — everything is implemented manually for clarity and control.
-
-- ✅ **Original WMT14 Data Preprocessing**  
-  Sentence pairs are preprocessed using the original [Moses tokenizer](https://github.com/moses-smt/mosesdecoder) and `clean-corpus-n.perl` script — same as the paper.
-
-- ✅ **Accurate and Tested Causal Masking**  
-  The masking logic (including padding and look-ahead/causal masks) is implemented and verified rigorously — a common source of bugs in other replications.
-
-- ✅ **End-to-End Pipeline With Evaluation**  
-  Includes full training loop with teacher forcing, BLEU score evaluation, and inference with greedy decoding.
-
-- ✅ **Detailed Commentary and Visual Aids**  
-  Custom drawings and inline explanations are included to clarify difficult topics like multi-head attention, layer normalization, and masking.
+- ✍️ **Medium Article**:  
+  [Implementing Attention Is All You Need — Lessons from Recreating the Transformer](https://medium.com/p/bada14b0023a)
 
 ---
 
-## 🧠 What You'll Learn
+## 🚀 Key Features
 
-This project is ideal if you want to:
-
-- Understand how Transformers really work under the hood
-- Study or reimplement research papers accurately
-- Learn how to write production-level deep learning code in **raw TensorFlow 2.x**
-- Train and evaluate sequence-to-sequence models on realistic datasets
-
----
-
-## 📌 Notebook Highlights
-
-> The entire project lives inside a single Kaggle notebook for ease of study.  
-> Every section is annotated and matches the structure of the original paper.
-
-📎 **Notebook**: [Transformer — Attention Is All You Need (Detailed)](https://www.kaggle.com/code/hamzamohiuddin/transformer-attention-is-all-you-need-detailed)
-
-Key Sections:
-- Tokenization & Data Preprocessing (Moses)
-- Positional Encoding
-- Multi-Head Scaled Dot-Product Attention
-- Encoder & Decoder Block
-- Causal and Padding Mask Implementation
-- Custom Training Loop with Loss & Accuracy
-- BLEU Score Evaluation
-- Greedy Inference
+- ✅ **TensorFlow 2 implementation** of *Attention Is All You Need* — no shortcuts or black boxes  
+- ✅ **Trained on WMT14 English–German** using official scripts and preprocessed corpus  
+- ✅ **Faithful preprocessing**: Moses tokenization + BPE (like the original paper)  
+- ✅ **Accurate causal masking**, validated across attention, logits, and loss layers  
+- ✅ **Three-way weight tying**: encoder embeddings, decoder embeddings, and output projection **share weights**  
+  ⚠️ *Often skipped in popular implementations — this repo preserves it as per the original paper*  
+- ✅ **Complete training pipeline**: learning rate schedule, loss masking, label smoothing  
+- ✅ **Visual explanations**: inline diagrams for masking, attention, positional encoding, and more  
+- ✅ **End-to-end tested**: outputs verified at every stage — embeddings → attention → logits  
+- ✅ **Educational structure**: built to teach paper implementation, not just replicate results
 
 ---
 
-## 🛠 Technologies Used
+## 📷 Visuals from the Notebook
 
-- **TensorFlow 2.x** (no Keras layers used)
-- **WMT14 En-De Dataset** (preprocessed using Moses scripts)
-- **Python** and **NumPy**
-- **BLEU evaluation**
+<p align="center">
+  <img src="https://storage.googleapis.com/kaggle-media/transformer_diagram.png" alt="Transformer Diagram" width="600"/>
+  <br>
+  <i>Detailed diagrams and tensor flows included to explain architecture components</i>
+</p>
+
+---
+
+## 📄 What’s Inside
+
+This repo links to the full implementation and tutorial-style notebook:
+
+| Component | Status |
+|----------|--------|
+| Encoder & Decoder Blocks | ✅ Fully implemented |
+| Multi-Head Attention | ✅ Custom with masking support |
+| Positional Encoding | ✅ Reimplemented with visualization |
+| Embedding Layer | ✅ With shared weights (tied) |
+| Training Schedule | ✅ Custom LR + label smoothing |
+| Masking Logic | ✅ Causal & padding masks validated |
+| Dataset Preprocessing | ✅ WMT14 + Moses/BPE |
+| TensorFlow Code | ✅ Native TF2 without shortcuts |
+
+---
+
+## 📚 Learning Outcomes
+
+This project was created to:
+- 🧠 **Understand every detail of the Transformer paper**
+- 🧪 **Answer real questions** about masking, autoregression, positional encoding, etc.
+- 🎯 **Train the full model** from scratch using open WMT14 data
+- 🛠️ **Recreate core components** without depending on libraries like HuggingFace or T2T
+- ✅ **Validate implementation correctness** at every stage
+
+---
+
+## 🧪 Why This Implementation Stands Out
+
+- Most open-source Transformer repos skip key aspects like:
+  - 🔁 **Three-way weight tying**
+  - 🧱 **Faithful masking logic**
+  - 🧹 **Real preprocessing from WMT14 scripts**
+- This implementation takes the paper **literally and rigorously**, as a learning and engineering challenge
+- Ideal for:
+  - Engineers studying transformers deeply
+  - Students learning paper-to-code skills
+  - Researchers verifying correctness of model components
+
+---
+
+## 🧠 Author
+
+**Hamza Mohiuddin**  
+Deep Learning Engineer — Computer Vision, Real-Time Systems, and Edge AI  
+📍 *Always learning, always building*  
+[LinkedIn](https://www.linkedin.com/in/hamzamohiuddin) • [Kaggle](https://www.kaggle.com/hamzamohiuddin) • [Medium](https://medium.com/@hamzamohiuddin)
 
 ---
 
 ## 📜 License
 
-This project is released under the [MIT License](LICENSE).
+Released under the **MIT License** — free for personal and commercial use with attribution.
 
 ---
 
-## 🙋‍♂️ Author
+## 🔍 GitHub Topics
 
-**Hamza Mohiuddin**  
-Deep Learning Engineer | Paper Implementation Specialist  
-📘 [Medium Article](https://medium.com/p/bada14b0023a) | 📊 [Kaggle Profile](https://www.kaggle.com/hamzamohiuddin)
-
-> Feel free to ⭐️ the repo or fork if this project helped you!  
-> Pull requests welcome for improvements or extensions.
-
----
