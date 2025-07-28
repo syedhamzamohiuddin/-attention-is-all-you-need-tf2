@@ -32,13 +32,16 @@ It replicates the architecture and training pipeline in detail — including **t
 
 ---
 
-## 📷 Visuals from the Notebook
+## 📷 Visual Aids and Explanations
 
-<p align="center">
-  <img src="https://storage.googleapis.com/kaggle-media/transformer_diagram.png" alt="Transformer Diagram" width="600"/>
-  <br>
-  <i>Detailed diagrams and tensor flows included to explain architecture components</i>
-</p>
+The Kaggle notebook includes **hand-drawn and code-generated visualizations** to explain core concepts such as:
+
+- Causal vs non-causal masking
+- Multi-head self-attention
+- Positional encoding
+- Masking propagation throughout the Transformer pipeline
+
+These visuals help demystify how the architecture enforces autoregressive constraints and how the attention mechanism works in practice.
 
 ---
 
